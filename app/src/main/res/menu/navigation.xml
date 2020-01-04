@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_birthdays"
+        android:icon="@drawable/fireworks"
+        android:title="@string/navbar_action_birthdays" />
+
+    <item
+        android:id="@+id/navigation_contacts"
+        android:icon="@drawable/card"
+        android:title="@string/navbar_action_contacts" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/settings"
+        android:title="@string/navbar_action_settings" />
+
+</menu>

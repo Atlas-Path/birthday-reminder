@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "216182817915",
+    "firebase_url": "https://atlaspath-d47b7.firebaseio.com",
+    "project_id": "atlaspath-d47b7",
+    "storage_bucket": "atlaspath-d47b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216182817915:android:3534183a66b1bbbec40ede",
+        "android_client_info": {
+          "package_name": "com.example.atlaspath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216182817915-ipck1b80afacf90tap5m929s0m4gqc4o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.atlaspath",
+            "certificate_hash": "112e5a53662d9a6069cd4bbff5b9046c446cc2e4"
+          }
+        },
+        {
+          "client_id": "216182817915-9nmp0u0likqu8dhl3b9592eab8hrjemv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTfx3-ZN6xkgdylIYyoYdSAH6RPMZS2Sg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216182817915-9nmp0u0likqu8dhl3b9592eab8hrjemv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
