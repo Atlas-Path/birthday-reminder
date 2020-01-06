@@ -20,7 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
-public class MainActivity extends AppCompatActivity {
+import io.opencensus.tags.Tag;
+
+public class MainActivity extends AppCompatActivity implements BirthdaysFragment.OnListFragmentInteractionListener {
 
     BottomNavigationView bottomNav;
 
@@ -81,5 +83,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, EmailPasswordActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onListFragmentInteraction(Contact contact) {
+        Log.d("MAIN", "Contact clicked in Main Activity");
     }
 }
