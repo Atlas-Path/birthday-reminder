@@ -6,13 +6,20 @@ public class Contact {
 
     public String id = "123";
     public String content = "TEST";
-    public Map<String, Map> data;
+    public Map<String, String> data;
 
     public Contact() {
     }
 
-    public Contact(Map<String, Map> userData) {
+    public Contact(Map<String, String> userData) {
         data = userData;
+    }
+
+    public String getDisplayName() {
+        String firstname = data.get("firstname");
+        String lastname = data.get("lastname");
+
+        return firstname + " " + lastname;
     }
 
 }

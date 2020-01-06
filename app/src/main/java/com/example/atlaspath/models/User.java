@@ -25,15 +25,20 @@ public class User extends Observable implements Serializable {
 
     public ContactManager contactManager;
 
-    /**
-     * Constructor
-     * @param userID
-     */
-    public User(String userID) {
+    public User() {
         // Access a Cloud Firestore instance from your Activity
         this.db = FirebaseFirestore.getInstance();
-        if(userID != null) {
-            this.getUser(userID);
+    }
+
+    /**
+     * Constructor
+     * @param uuid
+     */
+    public User(String uuid) {
+        // Access a Cloud Firestore instance from your Activity
+        this.db = FirebaseFirestore.getInstance();
+        if(uuid != null) {
+            this.getUser(uuid);
         }
     }
 
@@ -41,7 +46,7 @@ public class User extends Observable implements Serializable {
      * Get User
      * @param userID
      */
-    private void getUser(String userID) {
+    public void getUser(String userID) {
         String collectionName = "users";
         DocumentReference docRef = db.collection(collectionName).document(userID);
         docRef.get().addOnCompleteListener(task -> {

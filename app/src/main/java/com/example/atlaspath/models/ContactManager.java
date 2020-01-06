@@ -18,7 +18,7 @@ public class ContactManager {
         try {
             Map<String, Map> o = (Map<String, Map>) userData.get("contacts");
             for(Map.Entry<String, Map> entry : o.entrySet()) {
-                contacts.add(new Contact((Map<String,Map>)entry.getValue()));
+                contacts.add(new Contact((Map<String,String>)entry.getValue()));
             }
 
         }

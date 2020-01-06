@@ -15,12 +15,19 @@ import java.util.ArrayList;
 
 public class MyBirthdaysRecyclerViewAdapter extends RecyclerView.Adapter<MyBirthdaysRecyclerViewAdapter.ViewHolder> {
 
-    private final ArrayList<Contact> mValues;
+    private final ArrayList<Contact> contacts = new ArrayList<>();
     private final OnListFragmentInteractionListener mListener;
 
     public MyBirthdaysRecyclerViewAdapter(ArrayList<Contact> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+        if(items != null) {
+            contacts.clear();
+            contacts.addAll(items);
+        }
         mListener = listener;
+    }
+
+    public ArrayList<Contact> contacts() {
+        return contacts;
     }
 
     @Override
@@ -32,9 +39,9 @@ public class MyBirthdaysRecyclerViewAdapter extends RecyclerView.Adapter<MyBirth
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mItem = contacts.get(position);
+        holder.mIdView.setText(contacts.get(position).id);
+        holder.mContentView.setText(contacts.get(position).getDisplayName());
 
         holder.mView.setOnClickListener(v -> {
             if (null != mListener) {
@@ -47,7 +54,7 @@ public class MyBirthdaysRecyclerViewAdapter extends RecyclerView.Adapter<MyBirth
 
     @Override
     public int getItemCount() {
-        return (mValues == null) ? 0 : mValues.size();
+        return (contacts == null) ? 0 : contacts.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
