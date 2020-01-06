@@ -14,11 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.atlaspath.models.Contact;
 import com.example.atlaspath.models.User;
-import com.example.atlaspath.utils.UserSingleton;
+import com.example.atlaspath.singletons.UserSingleton;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Observer;
 
 public class BirthdaysFragment extends Fragment {

@@ -4,8 +4,8 @@ import java.util.Map;
 
 public class Contact {
 
-    public String id = "123";
-    public String content = "TEST";
+    public String id = "";
+    public String content = "";
     public Map<String, String> data;
 
     public Contact() {
