@@ -16,13 +16,20 @@ import java.util.Observable;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class UserRepository extends Observable implements Serializable {
+public class User extends Observable implements Serializable {
 
     private FirebaseFirestore db;
     private DocumentSnapshot userDoc;
     private Map<String, Object> userData;
+    private Boolean loaded = false;
 
-    public UserRepository(String userID) {
+    public ContactManager contactManager;
+
+    /**
+     * Constructor
+     * @param userID
+     */
+    public User(String userID) {
         // Access a Cloud Firestore instance from your Activity
         this.db = FirebaseFirestore.getInstance();
         if(userID != null) {
@@ -30,27 +37,36 @@ public class UserRepository extends Observable implements Serializable {
         }
     }
 
+    /**
+     * Get User
+     * @param userID
+     */
     private void getUser(String userID) {
         String collectionName = "users";
         DocumentReference docRef = db.collection(collectionName).document(userID);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()) {
-                    userDoc = task.getResult();
-                    if(userDoc.exists()) {
-                        // This will notify observers that data has been loaded
-                        userData = userDoc.getData();
-                        setChanged();
-                        notifyObservers();
-                    }
-                    else {
-                        Log.d(TAG, "No such document");
-                    }
+        docRef.get().addOnCompleteListener(task -> {
+            if(task.isSuccessful()) {
+                userDoc = task.getResult();
+                if(userDoc != null && userDoc.exists()) {
+                    // Get the core data
+                    userData = userDoc.getData();
+
+                    // Mark User as loaded
+                    loaded = true;
+
+                    // Load contact manager with user data
+                    contactManager = new ContactManager(userData);
+
+                    // This will notify observers that data has been loaded
+                    setChanged();
+                    notifyObservers();
                 }
                 else {
-                    Log.d(TAG, "get failed with ", task.getException());
+                    Log.d(TAG, "No such document");
                 }
+            }
+            else {
+                Log.d(TAG, "get failed with ", task.getException());
             }
         });
     }
@@ -71,6 +87,10 @@ public class UserRepository extends Observable implements Serializable {
                     + this.userData.get("lastname");
         }
         return displayName;
+    }
+
+    public Boolean isLoaded() {
+        return loaded;
     }
 
     /**
